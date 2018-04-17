@@ -11,8 +11,8 @@ git 提交仓库常用命令总结
     //初始化目录
     git init 
 
-    //把所有内容添加到索引库中
-    $git add .
+    //把所有内容添加到索引库中（将目录中所有文件添加）
+    $git add ./* 
 
     //同步线上库到本地（新添加项目）
     $git pull --rebase origin master
@@ -28,5 +28,17 @@ git 提交仓库常用命令总结
 
     //提交本地仓库到远程仓库主干中
     $git push -u origin master
+
+```
+
+```
+ $git remote -v //查看远程仓库
+
+ $git fetch origin masterFrom https://github.com/ptylll/ptylll-hexo.git //更新仓库
+
+ $git merge origin/master //远程仓库合并到本地
+
+ 
+git remote add origin git@github.com:ptylll/ptylll-hexo.git//本地git仓库关联GitHub仓库 
 
 ```
