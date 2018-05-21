@@ -84,3 +84,9 @@ server:
   port: 4001
   compress: true
   header: true  
+
+# add post views
+leancloud_visitors:
+  enable: true
+  app_id: dmdRVUJMCwADi92xARA5prTx-gzGzoHsz
+  app_key: W7QYRNwGkokGDusIBUjWYV6p
