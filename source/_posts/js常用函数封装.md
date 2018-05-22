@@ -16,7 +16,9 @@ tags:
    }  
  }
 ```
+
 <!--more-->
+
 ### 电话号验证
 
 ```
@@ -73,12 +75,14 @@ function strCase(str,type){
 ### 生成随机码
 
 ```
-// count 2~36 
+// count 2~36
 function randomWord(count){
     return Math.random().toString(count)+substring(2)
 }
 ```
+
 ### 判断数组是否重复
+
 ```
 //true 为重复 false 不重复
 function isArrRepeat(arr){
@@ -89,6 +93,40 @@ function isArrRepeat(arr){
     }else{
       return false
     }
+  }
+}
+```
+
+### cookie 增加 删除 获取Cookie
+
+```
+var handleCookie = {
+  addCookie:function(name,value,time){ // 存储cookie
+    var str = name +"="+ escape(value);
+    if(time > 0){
+      var date = new Date();
+      var ms = time * 3600 * 1000;
+      date.setTime(date.getTime() + ms);
+      str += "; expires=" + date.toGMTString(); 
+    }
+    document.cookie = str
+  },
+  getCookie:function(name){ // 获取cookie
+    var str = document.cookie;
+    if (str == "") {
+        return "false"; //没有找到Cookie值
+    }
+    var arrStr = document.cookie.split("; ");
+    for (var i = 0; i < arrStr.length; i++) {
+        var temp = arrStr[i].split("=");
+        if (temp[0] == name)
+            return unescape(temp[1]);
+    }
+  },
+  CleanCookie:function(name){ //删除cookie
+    var date = new Date();
+    date.setTime(date.getTime() - 10000);
+    document.cookie = name + "=a; expires=" + date.toGMTString();
   }
 }
 ```
