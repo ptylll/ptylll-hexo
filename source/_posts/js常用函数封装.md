@@ -78,5 +78,19 @@ function randomWord(count){
     return Math.random().toString(count)+substring(2)
 }
 ```
+### 判断数组是否重复
+```
+//true 为重复 false 不重复
+function isArrRepeat(arr){
+  var arr = arr.sort();
+  for(var i = 0,len = arr.length; i < len;i++){
+    if(arr[i] == arr[i+1]){
+      return true
+    }else{
+      return false
+    }
+  }
+}
+```
 
 #### 未完待续...
