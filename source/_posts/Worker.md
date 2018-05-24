@@ -2,7 +2,7 @@
 layout: 'h5新特性web'
 title: Worker
 date: 2018-05-07 20:26:52
-tags:
+tags: H5
 ---
 javascript是单线程,一次只能执行一个任务。当在 HTML 页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。
 这就会导致影响页面性能问题。

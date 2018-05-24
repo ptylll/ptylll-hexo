@@ -54,6 +54,12 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  Js: js
+  Git: git
+  H5: h5
+  Sass: sass
+  Es6: Es6
+  js设计模式: jsMode
 tag_map:
 
 # Date / Time format

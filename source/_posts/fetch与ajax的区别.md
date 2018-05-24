@@ -1,7 +1,7 @@
 ---
 title: fetch与ajax的区别
 date: 2018-04-09 21:33:47
-tags:
+tags: js
 ---
  ##### 一. Fetch是 window 下面的一个方法
  ###### Fetch写法：

@@ -1,7 +1,7 @@
 ---
 title: js常用函数封装
 date: 2018-05-20 21:25:06
-tags:
+tags: js
 ---
 
 ### 手机号码验证
@@ -131,4 +131,38 @@ var handleCookie = {
 }
 ```
 
+### 数据类型判断
+```
+  function isObj(val){
+    var type = typeof val;
+    var getType = Object.prototype.toString.call(val);
+    if(type === 'object'){
+      switch(getType){
+        case '[object Array]':
+          return 'Array';
+        case  '[object Function]':
+          return 'Function';
+        case '[object Null]':
+          return 'null';
+        case '[object Undefined]':
+          return 'undefined' 
+        default:
+          return type       
+      }
+    }
+    return type
+  }
+```
+
+### 阻止冒泡
+```
+ function stopBubble(e){
+   e = e || window.event;
+   if(e.stopPropagetion){//W3C
+     e.stopPropagetion()
+   }else{//IE
+     e.cancelBubble = true;
+   }
+ }
+```
 #### 未完待续...
