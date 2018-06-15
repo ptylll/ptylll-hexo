@@ -165,4 +165,10 @@ var handleCookie = {
    }
  }
 ```
+#### 类数值转化为数数组
+```
+function a(){
+  return Array.prototype.slice.apply(arguments)
+}
+```
 #### 未完待续...
