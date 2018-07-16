@@ -42,3 +42,18 @@ git 提交仓库常用命令总结
 git remote add origin git@github.com:ptylll/ptylll-hexo.git//本地git仓库关联GitHub仓库 
 
 ```
+```
+
+// 创建分支（创建分支时名字不能与原有分支名冲突）
+$git branch newBranch 
+
+// 查看全部分支
+$git branch -a 
+
+// 切换分支
+$git checkout newbranch
+
+// 切回master主分支
+$git checkout master
+
+```
