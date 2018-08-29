@@ -171,4 +171,51 @@ function a(){
   return Array.prototype.slice.apply(arguments)
 }
 ```
-#### 未完待续...
+
+#### 不需要第三个数实现两个数据对换 
+```
+ function swap(a,b){
+   var a,b;
+    b = b - a;
+    a = a + b;
+    b = a - b;
+
+   return [a,b]
+ }
+```
+#### 数组转对象
+
+##### 1.循环实现
+
+```
+  var arr = [1,2,4,5,6,7,8]
+  function arrConvertObj(arr){
+    var obj = {}
+    for(let i = 0, len = arr.length; i < len ; i++){
+      obj[i] = arr[i]
+    }
+    return obj
+  }
+  console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 4, 3: 5, 4: 6, 5: 7, 6: 8}
+```
+
+```
+var arr = [1,2,3,4,5,6,7,8,9]
+function arrConvertObj(arr){
+  var obj = {};
+  arr.forEach((item,index)=>{
+    obj[index] = item
+  })
+  return obj
+}
+console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9}
+```
+##### 2.ES6 Object.assigin()
+
+```
+var arr = [1,2,3,4,5,6,7,8,9]
+function arrConvertObj(arr){
+ return Object.assign({},arr)
+}
+console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9}
+```
