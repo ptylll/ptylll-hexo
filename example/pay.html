@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dome</title>
+</head>
+<style>
+  .box {
+    width: 300px;
+    height: 300px;
+    background: #58a;
+    padding: 20px;
+  }
+</style>
+
+<body>
+  <div class="box" id="box"></div>
+</body>
+<script>
+  let i = 0;
+
+  function pay() {  
+    let text = 'hello world !';
+    let len = text.length;
+    let dom = document.getElementById('box');
+    
+    if (i < len) {
+      dom.innerHTML = text.slice(0, i++) + '|';
+      setTimeout('pay()', 300)
+    } else {
+      dom.innerHTML = text;
+    }
+  }
+
+  console.log(pay())
+</script>
+
+</html>

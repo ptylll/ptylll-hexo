@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var array = [1, 11, 11, 1, 1, '1']
+
+    function unique(array) {
+      var arr = [];
+      if (arraylen === 1) {
+        console.log(1)
+        return array
+      } else if (arraylen === 0) {
+        console.log(2)
+        return
+      } else {
+        console.log(3)
+        for (var i = 0,arraylen = array.length; i < arraylen; i++) {
+          for (var j = 0,arrlen = arr.length; j < arrlen; j++) {
+            if (array[i] === arr[j]) {
+              break;
+            }
+          }
+          console.log(j)
+          if (j === arrlen) {
+            arr.push(array[i])
+          }
+        }
+        return arr
+      }
+    }
+
+    console.log(unique(array))
+  </script>
+</body>
+
+</html>

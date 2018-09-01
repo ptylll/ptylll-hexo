@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+     let curry = function(fn){
+       console.log(fn)
+       let args = Array.prototype.slice.call(arguments,1);
+       console.log(arguments)
+       console.log(args)
+       return function(){
+         let newArr = args.concat([].slice.call(arguments));
+         console.log(newArr)
+         return fn.apply(this,newArr)
+       }
+     }
+
+     function add(a,b,c){
+       return a + b + c
+     }
+
+     let currying = curry(add,1,2);
+
+     console.log(currying())
+     console.log(currying(5))
+     
+
+     function adds(a){
+       return a += a
+     }
+     function sub_curring(hand,list){
+       return list.map(hand)
+     }
+     var mapSQ = curry(adds,sub_curring)
+       console.log( mapSQ([1,2,3,4,5,6,7,8,9]))
+  </script>
+</body>
+</html>
