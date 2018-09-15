@@ -218,4 +218,20 @@ function arrConvertObj(arr){
  return Object.assign({},arr)
 }
 console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9}
+
+```
+
+##### js模糊查询
+
+```
+function vagueSelsect(keyWord,arr){
+  var retArr = []
+  for(let i = 0 ,len = arr.length; i < len ; i++){
+    if(arr[i].toString.indexOf(keyWord) >= 0){
+      retArr.push(arr[i])
+    }
+  }
+  return retArr;
+}
+
 ```
