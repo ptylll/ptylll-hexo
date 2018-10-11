@@ -2,6 +2,7 @@
 title: css userSelect 之页面禁止复制粘贴
 date: 2018-09-12 11:59:11
 tags: css
+categories: css
 ---
 
 user-select 为 css3 新增属性，主要是用于设置用户对文本选中控制。

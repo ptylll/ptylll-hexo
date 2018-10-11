@@ -2,6 +2,7 @@
 title: Object.defineProperty
 date: 2018-06-14 19:38:25
 tags: js
+categories: js
 ---
 
 js 对象是由一个或者多个键值对组合而成的集合，每个属性对应任意类型的值。
@@ -20,7 +21,7 @@ let obj ={}
     obj.name='李四';
     obj.age = 18;
     obj.msg = function(){
-    	return this.name + this.age
+    return this.name + this.age
     }
   console.log(obj.msg())  //李四 18
 ```

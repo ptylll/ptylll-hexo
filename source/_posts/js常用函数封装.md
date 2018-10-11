@@ -2,6 +2,7 @@
 title: js常用函数封装
 date: 2018-05-20 21:25:06
 tags: js
+categories: js
 ---
 
 ### 手机号码验证

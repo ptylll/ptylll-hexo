@@ -1,7 +1,8 @@
 ---
 title: vue各组件之间的通信
 date: 2018-06-11 11:22:28
-tags:
+tags: vue 
+categories: vue
 ---
 
 vue 组件之间的通信方式有：父 -> 子 ，子 -> 父 ， 非父子之间的通信。

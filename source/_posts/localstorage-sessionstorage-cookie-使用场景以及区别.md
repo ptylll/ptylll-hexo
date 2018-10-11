@@ -2,6 +2,7 @@
 title: localstorage sessionstorage cookie 使用场景以及区别
 date: 2018-04-14 21:44:25
 tags: js
+categories: js
 ---
 localstorage sessionstorage cookie 使用场景以及区别
 

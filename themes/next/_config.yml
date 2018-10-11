@@ -50,6 +50,7 @@ footer:
   # Icon between year and copyright info.
   icon: user
 
+  counter: true
   # If not defined, will be used `author` from Hexo main config.
   copyright:
   # -------------------------------------------------------------

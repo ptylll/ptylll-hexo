@@ -12,9 +12,9 @@ categories: about
 
           潘天益    男                1993年11月生
 
-          籍贯：河南信阳            现住址：杭州市下城区
+          籍贯：河南            现住址：杭州市下城区
 
-          联系方式：17682312123    E-mail：pantianyi@aliyun.com
+          联系方式：xxxxxxx    E-mail：pantianyi@aliyun.com
           
           github地址： https://ptylll.github.io/
 

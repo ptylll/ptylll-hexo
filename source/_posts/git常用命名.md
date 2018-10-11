@@ -2,6 +2,7 @@
 title: git常用命令
 date: 2018-04-08 11:21:30
 tags: git
+categories: git
 ---
 
 git 提交仓库常用命令总结

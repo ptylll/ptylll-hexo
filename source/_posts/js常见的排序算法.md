@@ -2,6 +2,7 @@
 title: js常见的排序算法
 date: 2018-04-17 10:45:16
 tags: js
+categories: js
 ---
 
 #### 快速排序

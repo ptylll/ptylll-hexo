@@ -1,7 +1,8 @@
 ---
 title: js两张图片合成一张
 date: 2018-06-06 22:14:13
-tags:
+tags: js
+categories: js
 ---
 js利用canvas元素合成图片
 主要使用到canvas上的drawImage()方法。
