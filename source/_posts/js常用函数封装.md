@@ -9,12 +9,12 @@ categories: js
 
 ```
     function isPone(tel){
-        var reg =  /^[1][3,4,5,7,8][0-9]{9}$/;  ;  
-    if (!reg.test(tel)) {  
-        return false;  
-   } else {  
-        return true;  
-   }  
+        var reg =  /^[1][3,4,5,7,8][0-9]{9}$/;  ;
+    if (!reg.test(tel)) {
+        return false;
+   } else {
+        return true;
+   }
  }
 ```
 
@@ -23,14 +23,14 @@ categories: js
 ### 电话号验证
 
 ```
-    function isTel(tel) {  
-        var reg = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;  
-        if (!reg.test(tel)) {  
-            return false;  
-        } else {  
-        return true;  
-    }  
- },  
+    function isTel(tel) {
+        var reg = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+        if (!reg.test(tel)) {
+            return false;
+        } else {
+        return true;
+    }
+ },
 ```
 
 ### 除去空格
@@ -44,7 +44,7 @@ function trim(str,type){
         case 1:
             return str.replace(/(^\s*)|(\s*$)/g, "");
         case 2:
-            return str.replace(/(^\s*)/g, "");  
+            return str.replace(/(^\s*)/g, "");
         case 3:
             return str.replace(/(\s*$)/g, "");
         default:
@@ -98,7 +98,7 @@ function isArrRepeat(arr){
 }
 ```
 
-### cookie 增加 删除 获取Cookie
+### cookie 增加 删除 获取 Cookie
 
 ```
 var handleCookie = {
@@ -108,7 +108,7 @@ var handleCookie = {
       var date = new Date();
       var ms = time * 3600 * 1000;
       date.setTime(date.getTime() + ms);
-      str += "; expires=" + date.toGMTString(); 
+      str += "; expires=" + date.toGMTString();
     }
     document.cookie = str
   },
@@ -133,6 +133,7 @@ var handleCookie = {
 ```
 
 ### 数据类型判断
+
 ```
   function isObj(val){
     var type = typeof val;
@@ -146,16 +147,37 @@ var handleCookie = {
         case '[object Null]':
           return 'null';
         case '[object Undefined]':
-          return 'undefined' 
+          return 'undefined'
         default:
-          return type       
+          return type
       }
     }
     return type
   }
 ```
 
-### 阻止冒泡
+### 深拷贝
+
+```
+function deepClone(obj) {
+  let objClone = Array.isArray(obj) ? [] : {}
+  if (obj && typeof obj === 'object') {
+    for (var key in obj) {
+      if(obj.hasOwnProperty(key)) { //判断ojb子元素是否为对象，如果是，递归复制
+        if (obj[key] && typeof obj[key] === "object") {
+          objClone[key] = deepClone(obj[key]);
+        } else { //如果不是，简单复制
+          objClone[key] = obj[key];
+        }
+      }
+    }
+  }
+  return objClone
+}
+```
+
+### 阻止冒泡或捕获
+
 ```
  function stopBubble(e){
    e = e || window.event;
@@ -166,14 +188,58 @@ var handleCookie = {
    }
  }
 ```
+
+#### 阻止默认行为
+
+```
+function stopdefault(e){
+  e = e || window.e
+  if(e.preventDefault){
+    e.preventDefault()
+  }else{ // IE
+    window.event.returnValue = false;
+  }
+}
+```
+
+（dom 事件流执行的机制是先捕获再冒泡）
+"DOM2 级事件”规定的事件流包含三个阶段：事件捕获阶段，处于目标阶段和事件冒泡阶段。首先发生的是事件捕获，然后是实际的目标接收到事件，最后阶段是冒泡阶段。
+
+#### DOM0 级事件处理
+
+通过 Javascript 指定事件处理程序的传统方式，所有浏览器均支持。每个元素（包括 window，document）都有自己的事件处理程序属性，但是必须在 DOM 节点加载完之后才会有效
+
+```
+var div = document.getElementById("div");
+    div.onclick = function(event) {
+        console.log("div");
+    };
+```
+
+#### DOM2 级事件处理程序
+
+IE9，chrome，Firefox，Opera，Safari 均实现了 DOM2 级事件处理程序，绑定事件方法 addEventListener()接收三个参数：事件名称，事件处理函数和一个布尔值。布尔值为 true，则表示在捕获阶段调用事件处理程序；如果为 false，则表示在冒泡阶段调用事件处理程序。addEventListener 允许在同一个元素上添加多个事件处理程序。
+
+```
+ var div = document.getElementById("div");
+     div.addEventListener("click", function(event) {
+        alert("event bubble");
+     }, false);
+     div.addEventListener("click", function(event) {
+        alert("event catch");
+    }, true);
+```
+
 #### 类数值转化为数数组
+
 ```
 function a(){
   return Array.prototype.slice.apply(arguments)
 }
 ```
 
-#### 不需要第三个数实现两个数据对换 
+#### 不需要第三个数实现两个数据对换
+
 ```
  function swap(a,b){
    var a,b;
@@ -184,6 +250,7 @@ function a(){
    return [a,b]
  }
 ```
+
 #### 数组转对象
 
 ##### 1.循环实现
@@ -211,7 +278,8 @@ function arrConvertObj(arr){
 }
 console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9}
 ```
-##### 2.ES6 Object.assigin()
+
+##### 2.ES6 Object.assigin()（浅拷贝）
 
 ```
 var arr = [1,2,3,4,5,6,7,8,9]
@@ -219,10 +287,9 @@ function arrConvertObj(arr){
  return Object.assign({},arr)
 }
 console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9}
-
 ```
 
-##### js模糊查询
+##### js 模糊查询
 
 ```
 function vagueSelsect(keyWord,arr){
@@ -234,5 +301,4 @@ function vagueSelsect(keyWord,arr){
   }
   return retArr;
 }
-
 ```
