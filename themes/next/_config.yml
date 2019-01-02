@@ -809,3 +809,11 @@ images: images
 
 # Theme version
 version: 5.1.4
+gitalk:
+  enable: true
+  githubID: ptylll  # 例：asdfv1929   
+  repo: ptylll.github.io   # 例：asdfv1929.github.io
+  ClientID: 6c496cd68f8c39e3cf4b
+  ClientSecret: b337f7b8fa8d192c1fe5f0773d20249146d31cc2
+  adminUser:  ptylll #指定可初始化评论账户
+  distractionFreeMode: true
