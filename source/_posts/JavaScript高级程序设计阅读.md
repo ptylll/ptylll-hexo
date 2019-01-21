@@ -79,3 +79,30 @@ console.log('is null')
 <script async src="//jsfiddle.net/ptylll/cabe2gyx/5/embed/"></script>
 
 #### Boolean
+
+Boolean 类型只有两个值true/false。虽然Boolean只有两个值但是js中是所以的值都是与之等价的，如果要将其中一个值转化为布尔类型可以直接使用Boolean()方法。
+```
+Boolean(123) //true
+Boolean(0)//false
+Boolean(null)//false
+Boolean(undefined)//false
+Boolean('')//false
+```
+
+转化规则：
+```
+Boolean 类型 false  true
+String 类型除 ''(空字符串)其余都为true
+Number 类型除NaN 0 其余都为true
+Object 类型除 Null 都为true
+Undefined 类型都为false
+```
+
+#### Number
+
+Number 类型使用 IEEE754 格式来表示整数和浮点数值。
+默认情况下为十进制.
+```
+var a = 123
+```
+除10
