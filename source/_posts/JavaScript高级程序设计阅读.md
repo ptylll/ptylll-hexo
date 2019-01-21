@@ -77,3 +77,5 @@ console.log('is null')
 ```
 在线示例:
 <script async src="//jsfiddle.net/ptylll/cabe2gyx/5/embed/"></script>
+
+#### Boolean
