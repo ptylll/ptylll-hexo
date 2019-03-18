@@ -85,8 +85,47 @@ fetch('/avatars', {
   body: data
 })
 ```
-....
-等等
+
+### Headers
+
+我们可以通过Headers接口来定义自己的headers对象。
+Header接口是一个简单的键值对：
+```
+  var content = "Hello World";
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "text/plain");
+  myHeaders.append("Content-Length", content.length.toString());
+  myHeaders.append("X-Custom-Header", "ProcessThisImmediately");
+```
+我们也可以通过给构造函数传入多维数组或者js字面量：
+```
+var headers = new Headers({
+  "Content-Type": "text/plain",
+  "Content-Length": content.length.toString(),
+  "X-Custom-Header": "ProcessThisImmediately",
+});
+```
+获取Headers内容
+```
+console.log(myHeaders.has("Content-Type")); // true
+console.log(myHeaders.has("Set-Cookie")); // false
+myHeaders.set("Content-Type", "text/html");
+myHeaders.append("X-Custom-Header", "AnotherValue");
+ 
+console.log(myHeaders.get("Content-Length")); // 11
+console.log(myHeaders.getAll("X-Custom-Header")); // ["ProcessThisImmediately", "AnotherValue"]
+ 
+myHeaders.delete("X-Custom-Header");
+console.log(myHeaders.getAll("X-Custom-Header")); // [ ]
+```
+虽然一些操作只能在 ServiceWorkers 中使用，但是它提供了更方便的操作 Headers 的 API。
+
+<!-- #### Fetch 跨域
+
+
+#### Fetch 监听上传
+
+#### Fetct 取消请求 -->
 
 ##### 二.Ajax
 
@@ -95,49 +134,50 @@ fetch('/avatars', {
     AJAX全称“Asynchronous JavaScript and XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。本质是使用XMLHttpRequest 来请求数据。
 
 ###### 举个栗子
+
 ```
-	function ajax(options){
-			options = options || {};
-			options.type = (options.type || "get").topUpperCase();
-			options.dataType = options.dataType || "json";
-		var params = formatParams(options.data);
+  function ajax(options){
+      options = options || {};
+      options.type = (options.type || "get").topUpperCase();
+      options.dataType = options.dataType || "json";
+    var params = formatParams(options.data);
 
-		if(window.XMLHttpRequest){//创建xhr
-			var xhr = new XMLHttpRequest();
-		}else{
-			var xhr = ActiveXObject('Microsoft.XMLHTTP');
-		}
-	}
+    if(window.XMLHttpRequest){//创建xhr
+      var xhr = new XMLHttpRequest();
+    }else{
+      var xhr = ActiveXObject('Microsoft.XMLHTTP');
+    }
+  }
 
-	//接收
-	xhr.onreadystatechange=function(){
-		if(xhr,readyState == 4){
-			var status = xhr.status;
-			if(status >= 200 && options.success(xhr.responseText,xhr.responseXML)){
-				options.success && options.success(xhr.responseText,xhr.responseXML);
-			}else{
-				options.fail && options.fail(status);
-			}
-		}
-	}
-	//连接发送
-	if(options.type =="GET"){
-		xhr.open("GET",option.url+"?"+params,true);
-		xhr.send(null);
-	}else if(options.type =="POST"){
-		xhr.open("POST",options.url,true);
-		xhr.setRequestHeader("Content-Type","application/x-www-form-urllencoded");
-		xhr.send(params);
-	}
-	//格式化参数
-	function formatParams(data){
-		var arr=[];
-		for (var name in data) {
-			arr.push(encodeURLCompontent(name)+"="+encodeURLCompontent(data[name]));
-		}
-		arr.push(("v="+Math.random()).replace(".",""));
-		return arr.join("&");
-	}
+  //接收
+  xhr.onreadystatechange=function(){
+    if(xhr,readyState == 4){
+      var status = xhr.status;
+      if(status >= 200 && options.success(xhr.responseText,xhr.responseXML)){
+        options.success && options.success(xhr.responseText,xhr.responseXML);
+      }else{
+        options.fail && options.fail(status);
+      }
+    }
+  }
+  //连接发送
+  if(options.type =="GET"){
+    xhr.open("GET",option.url+"?"+params,true);
+    xhr.send(null);
+  }else if(options.type =="POST"){
+    xhr.open("POST",options.url,true);
+    xhr.setRequestHeader("Content-Type","application/x-www-form-urllencoded");
+    xhr.send(params);
+  }
+  //格式化参数
+  function formatParams(data){
+    var arr=[];
+    for (var name in data) {
+      arr.push(encodeURLCompontent(name)+"="+encodeURLCompontent(data[name]));
+    }
+    arr.push(("v="+Math.random()).replace(".",""));
+    return arr.join("&");
+  }
 
     ajax({
         url: "./TestXHR.aspx",              //请求地址
@@ -150,7 +190,7 @@ fetch('/avatars', {
         fail: function (status) {
             // 此处放失败后执行的代码
         }
-	});
+  });
 ```
 #### 总结
 

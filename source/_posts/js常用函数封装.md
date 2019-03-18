@@ -250,6 +250,12 @@ function a(){
    return [a,b]
  }
 ```
+ES6 方法
+```
+let a = 1;
+let b = 2;
+[a, b] = [b, a];
+```
 
 #### 数组转对象
 
@@ -287,6 +293,15 @@ function arrConvertObj(arr){
  return Object.assign({},arr)
 }
 console.log(arrConvertObj(arr))//{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9}
+```
+##### 3.二维数组转对象
+
+```
+ let solution = [['O', '0'], ['M', '1'], ['Y', '2'], ['E', '5'], ['N', '6'], ['D', '7'], ['R', '8'], ['S', '9']]
+  solution.forEach(k => {
+    solutionObj[k[0]] = k[1]
+  });
+  //{O: "0", M: "1", Y: "2", E: "5", N: "6", …}
 ```
 
 ##### js 模糊查询
