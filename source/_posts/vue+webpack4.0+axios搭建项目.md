@@ -88,7 +88,7 @@ module.exports = merge(comm, {
     path: path.resolve(__dirname, '../dist') //打包后文件夹
   },
   module: {},
-  mode: 'dev'
+  mode: 'development'
 })
 ```
 ```
@@ -105,7 +105,7 @@ module.exports = merge(comm, {
     filename: 'js/[name].[contenthash].js', //contenthash 若文件内容无变化，则contenthash 名称不变
     path: path.resolve(__dirname, '../dist') //打包后文件夹
   },
-  mode: 'prod'
+  mode: 'production'
 })
 ```
 ##### 5.添加Vue插件
@@ -153,7 +153,6 @@ import App from './app.vue'
 
 new Vue({
   el: '#app',
-  router,
   render: h => h(App)
 })
 
@@ -165,7 +164,6 @@ new Vue({
 /**/
 <body>
   <div id='app'>
-
   </div>
 </body>
 /**/
@@ -216,3 +214,81 @@ Plugins:[
   "build": "webpack --config config/webpack.prod.js"
 },
 ```
+#### 3.拓展功能
+以上配置已经完成了一个简易的本地开发环境，当我们需要写在项目中添css 图片等等，这个环节目前都是不支持的，所以我们需要在现有的环境中拓展功能。
+
+##### 1.安装loader (css-loader, sass-loader, style-loader,postcss-loader,node-sass,autoprefixer,node-sass ,file-loader)
+```
+yarn add css-loader sass-loader style-loader postcss-loader autoprefixer node-sass file-loader
+```
+```
+//当前版本
+"css-loader": "^2.1.1",
+"postcss-loader": "^3.0.0",
+"sass-loader": "^7.1.0",
+"style-loader": "^0.23.1",
+"autoprefixer": "^9.5.1",
+"node-sass": "^4.11.0",
+```
+
+处理css 
+```
+css-loader
+style-loader
+```
+处理sass
+```
+sass-loader
+node-sass
+```
+css兼容
+```
+"postcss-loader": "^3.0.0",
+"autoprefixer": "^9.5.1",
+```
+并在根文件夹创建 postcss.config.js 文件
+```
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
+}
+```
+webpack.base.js中添加
+```
+//处理sass scss css 
+/**/
+ rules: [{
+        //sass scss css 处理
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+    ]
+/**/    
+```
+解析文件图片
+```
+/**/
+rules: [{
+    test: /\.(png|svg|jpg|gif)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          limit: 5000,
+          // 分离图片至imgs文件夹
+          name: "imgs/[name].[ext]",
+        }
+      },
+    ]
+  }],
+/**/
+```
+
+#### 4.webpack 构建打包优化
+
