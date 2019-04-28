@@ -292,3 +292,252 @@ rules: [{
 
 #### 4.webpack 构建打包优化
 
+1.解决每次重新打包，dist 文件夹文件未清除
+
+```
+yarn add clean-webpack-plugin
+```
+当前版本
+```
+ "clean-webpack-plugin": "^2.0.1"
+```
+
+```
+//webpack.prod.js
+
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+//**
+plugins:[
+  //**
+  new CleanWebpackPlugin(['dist/*'], {
+    root: path.resolve(__dirname, '../')
+  }),
+  //**
+]
+```
+2.分离 CSS
+
+安装mini-css-extract-plugin
+```
+yarn add mini-css-extract-plugin
+```
+当前版本
+
+```
+"mini-css-extract-plugin": "^0.6.0"
+```
+
+```
+//webpack.prod.js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+//**
+  plugins: [
+ 
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[id].[hash].css',
+    }),
+  ],
+```
+3.压缩CSS和JS代码
+
+安装 optimize-css-assets-webpack-plugin 和 uglifyjs-webpack-plugin 插件
+
+```
+yarn add optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin
+```
+
+当前版本
+```
+"optimize-css-assets-webpack-plugin": "^5.0.1"
+"uglifyjs-webpack-plugin": "^2.1.2"
+```
+
+
+```
+// webpack.prod.js
+// 压缩CSS和JS代码
+// ...省略号
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
+module.exports = merge(common, {
+  // ...省略号
+  optimization: {
+    // ...省略号
+    minimizer: [
+      // 压缩JS
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            warnings: false, // 去除警告
+            drop_debugger: true, // 去除debugger
+            drop_console: true // 去除console.log
+          },
+        },
+        cache: true, // 开启缓存
+        parallel: true, // 平行压缩
+        sourceMap: false // set to true if you want JS source maps
+      }),
+      // 压缩css
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+})
+
+```
+4. 配置resolve
+Webpack 在启动后会从配置的入口模块出发找出所有依赖的模块，Resolve 配置 Webpack 如何寻找模块所对应的文件。 Webpack 内置 JavaScript 模块化语法解析功能，默认会采用模块化标准里约定好的规则去寻找，但你也可以根据自己的需要修改默认的规则。
+
+```
+//webpack.base.js
+resolve: {
+  extensions: ['.js', '.vue'],
+  alias: {
+    vue: 'vue/dist/vue.esm.js',
+    '@': path.resolve('src')
+    '$component': path.resolve('./src/component'),
+    '$api': path.resolve('./src/api'),
+    '$page':path.resolve('./src/page')
+  }
+}
+```
+
+#### 5.封装配置axios
+
+scr 目录下添加api目录，新建http.js文件
+```
+import axios from 'axios'
+
+axios.default.baseURL = ''
+axios.default.timeout = 5000
+
+//request 拦截器
+axios.interceptors.request.use(config => {
+    config.data = JSON.stringify(config.data);
+    config.headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
+
+//response 拦截器
+axios.interceptors.response.use(
+  response => {
+    if (response.data.errCode == 2) {
+      router.push({
+        path: "/home",
+        querry: {
+          redirect: router.currentRoute.fullPath
+        } //从哪个页面跳转
+      })
+    }
+    return response;
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
+
+export function get(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.get(url, {
+        params: params
+      })
+      .then(res => {
+        resolve(res.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+export function patch(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.patch(url, {
+        params: params
+      })
+      .then(res => {
+        resolve(res.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+export function remove(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.delete(url, {
+        params: params
+      })
+      .then(res => {
+        resolve(res.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+export function put(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.put(url, {
+        params: params
+      })
+      .then(res => {
+        resolve(res.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+export function post(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.post(url, {
+        params: params
+      })
+      .then(res => {
+        resolve(res.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+```
+在index.js文件中引入方法通过Vue.protoype挂载到vue原型上
+```
+import { get, patch, remove, put, post } from './src/api/http.js'
+
+Vue.prototype.$post = post
+Vue.prototype.$get = get
+Vue.prototype.$put = put
+Vue.prototype.$delete = remove
+Vue.prototype.$patch = patch
+```
+使用
+```
+//**
+  mounted() {
+    this.$get('/api/in_theaters').then(res=>{
+      console.log(res)
+    })
+  },
+//**
+```
+#### 6.总结
+整体配置不算麻烦，主要是插件对应的版本以及配置方法。
+
+参考链接：
+https://juejin.im/post/5b7d350951882542f3278b11
+https://webpack.github.io/
