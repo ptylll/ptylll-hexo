@@ -18,7 +18,7 @@ tags: react
 ##### 语法：
 
 ES5 写法
-```
+```js
 class FastReplyList extends React.Component {
   render() {
     const {id,context,sendMessage} = this.props
@@ -37,7 +37,7 @@ class FastReplyList extends React.Component {
 
 ES6写法：
 
-```
+```js
 const FastReplyList = props => (
   <div
     className='chichat-com-list'
@@ -66,7 +66,7 @@ const FastReplyList = props => (
 
 ES5写法
 
-```
+```js
   let FasetReplyList = React.createClass({
     getDefaultProps:function(){
       return{
@@ -90,7 +90,7 @@ ES5写法
 
 ES6写法
 
-```
+```js
 class FastReplyList extends React.Component{
   getDefaultProps= {
     id:1,
@@ -115,7 +115,8 @@ class FastReplyList extends React.Component{
 
 propType用于检测组件传入props的类型,当检测到传入的值无效时浏览器会抛出错误，一般用于开发模式。
 propType 基本验证器：
-```
+
+```js
 import propTypes from 'prop-types'
 
 class FastReplyList extebds React.Component{
@@ -197,7 +198,7 @@ class FastReplyList extebds React.Component{
 
 无状态组件使用方法
 
-```
+```js
 const  FastReplyList = props =>{
   /.../
 }
@@ -217,7 +218,7 @@ FastReplyList.propTypes={
 
 为组件添加默认属性
 
-```
+```js
   FastReplyList.defaultProps={
     name:'张三'
   }

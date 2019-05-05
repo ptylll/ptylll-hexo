@@ -11,15 +11,18 @@ drawImage() 方法也能够绘制图像的某些部分，以及/或者增加或�
 ### drawImage()用法
 
 1.在画布上定位图像：
-```
+
+```js
 drawImage(img,x,y)
 ```
 2.在画布上定位图像设置宽高：
-```
+
+```js
 drawImage(img,x,y,with,height)
 ```
 3.剪切图像
-```
+
+```js
 context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
 ```
 <!--more-->
@@ -41,7 +44,7 @@ context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
 ### 图片合成代码
 
 主要js代码
-```
+```js
 var myCanvas = document.getElementById('myCanvas');
   var c = myCanvas.getContext('2d');
 

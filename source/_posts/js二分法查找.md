@@ -17,7 +17,8 @@ tags: js算法
 
 js 实现 二分法查找
 循环实现
-```
+
+```js
 function find(arr, val) {
   let e = arr.length - 1;
   let s = 0;
@@ -44,7 +45,7 @@ find([1, 2, 3, 4, 5, 6], 5)
 
 递归实现
 
-```
+```js
 function find(arr,val,leftIndex,rightIndex){
   let midIndex = Math.floor((leftIndex +　rightIndex) / 2);
   let midVal = arr[midIndex];

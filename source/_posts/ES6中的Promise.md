@@ -9,7 +9,7 @@ js的执行环境是单线程，一次只能执行一个任务，如果任务多
 <!--more-->
 callback的实现原理是当一个A函数运行了一定时间后去调用B函数。
 
-```
+```js
 function A(){
 
     setTimeout(function(){
@@ -42,7 +42,7 @@ rejected(已失败)
 
 ##### Promise用法
 传统的回调函数写法
-```
+```js
 function a(){
     if(Math.random() > .5){
         successCallback("success")
@@ -61,7 +61,7 @@ function failCallBack(error){ //失败回调
 ```
 Promise的基本用法
 
-```
+```js
 var promise = new Promise(function(resolve,reject){
     if(success){
         resolve(a)
@@ -93,7 +93,7 @@ Promise对象一旦实例化就会立即执行
 6.Promise.prototype.catch();异常处理
 
 ###### Promise.resolve()与Promise.reject()
-```
+```js
 var myPromises = new Promise(function(resolve,reject){
 	setTimeout(function(){
 		resolve("成功！")
@@ -120,7 +120,7 @@ myPromises.then(function(data){
 
 ###### Promise.reac() 与 Promise.all()
 
-```
+```js
 var a1 = new Promise(function(){
     setTimeout(function(){
         console.log('a1')
@@ -153,7 +153,7 @@ Promise.all([a1,a2,a3,a4]).then(function(data){
 Promise.all()执行结果
 ![](http://ot2pck40x.bkt.clouddn.com/1528208260%281%29.jpg)
 
-```
+```js
 var a1 = new Promise(function(){
     setTimeout(function(){
         console.log('a1')
@@ -185,7 +185,7 @@ Promise.race([a1,a2,a3,a4]).then(function(data){
 执行结果![](http://ot2pck40x.bkt.clouddn.com/1528208356%281%29.jpg)
 
 ###### Promise.prototype.catch()
-```
+```js
 new Promise(function(resolve,reject){
     throw new Error('出现异常')
 }).catch(function(err){

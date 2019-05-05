@@ -18,7 +18,7 @@ tags: jsMode
 
 #### 实现方式
 
-```
+```js
     var pubsub ={};
     (function(myObject){
         var topics= {},

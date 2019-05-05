@@ -7,7 +7,7 @@ tags: js
 js 对象是由一个或者多个键值对组合而成的集合，每个属性对应任意类型的值。
 声明一个对象方式
 
-```
+```js
 let obj = {}
 //或者
 let obj = new Object()
@@ -15,7 +15,7 @@ let obj = new Object()
 
 在对象上添加属性：
 
-```
+```js
 let obj ={}
     obj.name='李四';
     obj.age = 18;
@@ -27,7 +27,7 @@ let obj ={}
 
 修改属性：
 
-```
+```js
 let obj ={}
     obj.name='李四';
     obj.age = 18;
@@ -48,7 +48,7 @@ let obj ={}
 Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
 Object.defineProperty(obj,prop,desc);
 
-```
+```js
 obj:
 要修改或者定义属性的对象
 
@@ -77,7 +77,7 @@ writable：
 
 示例：
 
-```
+```js
 let obj ={}
     obj.name='李四';
     obj.age = 18;
@@ -178,7 +178,7 @@ set
 
 示例：
 
-```
+```js
 let obj = {}
 obj.name = '李四';
 obj.age = 18;

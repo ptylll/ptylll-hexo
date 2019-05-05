@@ -21,14 +21,14 @@ web Worker是运行在后台的js脚本，不影响页面性能。
 8. setTimeout()和setInterval()方法
 
 ##### Worker兼容性检测
-```
+```js
 if(window.Worker){
     ...
 }
 ```
 ##### Worker创建
 Worker 创建非常简单
-```
+```js
 var worker = new Worker('worker.js');
 ```
 
@@ -36,13 +36,14 @@ var worker = new Worker('worker.js');
 
 Worker 通过 postMessage()和onmessage()来发送接收消息。
 
-```
+```js
 worker.js
 //发送消息 
 postMessage('hello world');
 
 ```
-```
+
+```js
 //index.html
  var worker = new Worker('worker.js');
     worker.onmessage=function(event){//接收消息
@@ -51,17 +52,19 @@ postMessage('hello world');
 ```
 ##### Worker终止 
 创建 web worker 对象后，它会继续监听消息（即使在外部脚本完成之后）直到其被终止为止。
-```
+
+```js
 worker.terminate();
 ```
+
 而在worker线程中，workers 也可以调用自己的 close  方法进行关闭(关闭当前线程): 
-```
+```js
 close();
 ```
 
 ##### 处理错误
 onerror 处理错误事件 
-```
+```js
 worker.onerror = function(e){
     console.log('erro:'+ e.message);
         worker.terminate();
@@ -70,19 +73,20 @@ worker.onerror = function(e){
 ##### importScript
 importScript是以阻塞方法加载js的，只有所有文件加载完成之后接下来的脚本才能继续运行。
 
-```
+```js
 importScripts(worker1.js,worker2.js)
 worker.onmessage = function(event){
     console.log(event.data)
 }
 ```
+
 Worker的优点是创建多线程执行js，当然也有一定的局限性：
 . 不能跨域
 . worker内的代码不能访问DOM
 
 ##### Worker 实现简单例子
 
-```
+```html
 //index
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +112,7 @@ Worker的优点是创建多线程执行js，当然也有一定的局限性：
 
 ```
 
-```
+```js
 //worker.js
 function timedCount(){
     for(var j = 0, sum = 0 ;j < 100 ; j++){

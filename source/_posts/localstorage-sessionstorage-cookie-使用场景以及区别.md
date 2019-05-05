@@ -59,7 +59,7 @@ Cookie 与localStroage类似 是数据持久化的一种解决方案。
 #### cookie 语法示例
 
 读取cookie
-```
+```js
 function getCookie(key,value,option){
     if(typeof value === 'undefined'){
         var cookie = document.cookie.split(";");
@@ -74,7 +74,7 @@ function getCookie(key,value,option){
 }
 ```
 存储Cookie
-```
+```js
 function setCookie(key,value,time){
     var date = new Date();
         date.setDate(date.getDate() + time );
@@ -84,7 +84,7 @@ function setCookie(key,value,time){
 ```
 删除指定的Cookie
 
-```
+```js
 function removeCookie(key){
     setCookie(key,'',-1)//原理是把Cookie保质期退回一天便可以删除
 }

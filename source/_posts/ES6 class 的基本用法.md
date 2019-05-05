@@ -9,7 +9,7 @@ ES6 class 的基本用法
 <!--more-->
 js传统做法是当生成一个对象实例，需要定义构造函数，然后通过new的方式完成。
 
-```
+```js
   function Person(){
     this.name="张三";
     this.age = 15,
@@ -25,7 +25,7 @@ js传统做法是当生成一个对象实例，需要定义构造函数，然后
 
 ES6 写法
 
-```
+```js
 class Person{
   constructor(){
     this.name="张三",
@@ -42,7 +42,7 @@ var a = new Person();
 
 在构造函数prototype上面的的属性都是存在的；
 
-```
+```js
 class Person{
   constructor() {
     // ...
@@ -68,7 +68,7 @@ Point.prototype = {
 
 生成类的实例对象的写法，与 ES5 完全一样，也是使用new命令。前面说过，如果忘记加上new，像函数那样调用Class，将会报错
 
-```
+```js
   class Person{
     
   }
@@ -79,7 +79,7 @@ Point.prototype = {
 
 ### 类表达式
 
-```
+```js
 const People = class Person{
    getNames(){
     return Person.name
@@ -95,7 +95,7 @@ Person只在 Class 的内部代码可用，指代当前类
 
 ### 立即执行函数
 
-```
+```js
  const People = new class{
      constructor(name) {
         this.name = name
@@ -111,7 +111,7 @@ Person只在 Class 的内部代码可用，指代当前类
 
 ### class 存值取值get() set()
 
-```
+```js
 class MyClass {
   constructor() {
     // ...
@@ -138,7 +138,7 @@ inst.prop
 
 类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
 
-```
+```js
 class People{
  constructor() {
     // ...
@@ -154,7 +154,7 @@ var a = new People();
 ```
 ###### 父类的静态方法，可以被子类继承。
 
-```
+```js
 
 class Foo {
   static classMethod() {
@@ -171,7 +171,7 @@ Bar.classMethod() // 'hello'
 
 ###### 静态方法也是可以从super对象上调用的。
 
-```
+```js
 class Foo {
   static classMethod() {
     return 'hello';
@@ -189,7 +189,7 @@ Bar.classMethod() // "hello, too"
 ```
 ### extends继承
  
- ``` 
+ ``` js
  class Parent{
     contructor(name,age){
         class Parent {
@@ -213,7 +213,7 @@ c.speakSometing(); // I can speek chinese
 ```
 在子类的构造函数中，只有调用super之后，才可以使用this关键字，否则会报错。这是因为子类实例的构建，是基于对父类实例加工，只有super方法才能返回父类实例。
 
-```
+```js
 class Point {
   constructor(x, y) {
     this.x = x;
@@ -233,7 +233,7 @@ class ColorPoint extends Point {
 ### Object.getPrototypeOf()
 
 Object.getPrototypeOf方法可以用来从子类上获取父类。
-```
+```js
 Object.getPrototypeOf(ColorPoint) === Point
 
 ```
@@ -245,7 +245,7 @@ super这个关键字，既可以当作函数使用，也可以当作对象使用
 
 当函数使用时
 
-```
+```js
 class A {}
 
 class B extends A {
@@ -257,7 +257,7 @@ class B extends A {
 
 super作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。
 
-```
+```js
 class A {
   p() {
     return 2;
@@ -281,7 +281,7 @@ mixin就是把一个对象的方法和属性拷贝到另一个对象上，注意
 ### demo 
 简单的mixin 拷贝某些方法
 
-```
+```js
   function extend(destClass, srcClass, methods) {
         var srcProto  = srcClass.prototype;
         var destProto = destClass.prototype ;   
@@ -305,7 +305,7 @@ mixin就是把一个对象的方法和属性拷贝到另一个对象上，注意
 ![](http://ot2pck40x.bkt.clouddn.com/L%5D5B30_IORO%5DC%7BDXR~2%2931Q.png)
 
 mixin 多继承
-```
+```js
   function extend(destClass) {
     var classes = Array.prototype.slice.call(arguments, 1);
     for (var i=0; i<classes.length; i++) {

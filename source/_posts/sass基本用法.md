@@ -11,7 +11,7 @@ Sass 是一个 CSS 的扩展，它在 CSS 语法的基础上，允许您使用�
 
 sass 变量声明方法 以及变量引用
 
-```
+```css
 $blue: #0084ff;
 $color:#cc6699;
 
@@ -51,6 +51,7 @@ body{
     width: 300px;
 }
 ```
+
 在线示例
 <script async src="//jsfiddle.net/ptylll/9wmm8eqv/embed/html,css,result/dark/"></script>
 
@@ -59,7 +60,7 @@ body{
 sass的变量名可以与css中的属性名和选择器名称相同，包括中划线和下划线。这完全取决于个人的喜好，有些人喜欢使用中划线来分隔变量中的多个词（如$highlight-color），而有些人喜欢使用下划线（如$highlight_color）。使用中划线的方式更为普遍，这也是compass和本文都用的方式。
 不过，sass并不想强迫任何人一定使用中划线或下划线，所以这两种用法相互兼容。用中划线声明的变量可以使用下划线的方式引用，反之亦然。这意味着即使compass选择用中划线的命名方式，这并不影响你在使用compass的样式中用下划线的命名方式进行引用：
 
-```
+```css
 $background-color:#ccc;
 $background_color:#ccc;
 
@@ -70,7 +71,8 @@ $background_color:#ccc;
 #### 2. 嵌套规则
 
 ##### 2-1 Sass 允许将一个 CSS 样式嵌套进另一个样式中，内层样式仅适用于外层样式的选择器范围内
-```
+
+```css
 #main{
     color:#333;
     font-size:16px;
@@ -94,7 +96,7 @@ $background_color:#ccc;
 
 ##### 2-2  引用父选择器: （$）符号
 
-```
+```css
 #main {
     $color:#f00;
     color: #333;

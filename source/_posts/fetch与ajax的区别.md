@@ -6,7 +6,7 @@ tags: js
  ##### 一. Fetch是 window 下面的一个方法
  ###### Fetch写法：
  
- ```
+ ```js
     fetch('url'，{
         methods:'get'
     })
@@ -28,7 +28,7 @@ tags: js
 
 HTML
 
-```
+```js
 fetch('/user.html')
 .then(function(res){
     return res.text();
@@ -40,7 +40,7 @@ fetch('/user.html')
 
 JSON 
 
-```
+```js
     fetch('/users.json')
     .then(function(response) {
         return response.json()
@@ -54,7 +54,7 @@ JSON
 
 Post form
 
-```
+```js
 
     var form = document.querySelector('form');
 
@@ -72,7 +72,7 @@ Post form
 ```
 File upload
 
-```
+```js
 var input = document.querySelector('input[type="file"]')
 
 var data = new FormData()
@@ -94,7 +94,7 @@ fetch('/avatars', {
     AJAX全称“Asynchronous JavaScript and XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。本质是使用XMLHttpRequest 来请求数据。
 
 ###### 举个栗子
-```
+```js
 	function ajax(options){
 			options = options || {};
 			options.type = (options.type || "get").topUpperCase();
@@ -160,7 +160,7 @@ fetch('/avatars', {
 
 在默认情况下 fetch不会接受或者发送cookies，如果需要只能手动设置 credentials: 'include'
 
-```
+```js
 fetct('/api',{
     credentials: 'include'
 })
