@@ -1,6 +1,8 @@
 ---
 title: js 观察者模式
 date: 2018-04-16 21:46:28
+categories: 
+- jsMode
 tags: jsMode
 ---
  

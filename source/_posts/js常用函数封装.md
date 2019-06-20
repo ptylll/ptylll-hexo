@@ -1,6 +1,8 @@
 ---
 title: js常用函数封装
 date: 2018-05-20 21:25:06
+categories: 
+- Tool
 tags: js
 ---
 

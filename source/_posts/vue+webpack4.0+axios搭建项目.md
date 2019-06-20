@@ -1,6 +1,8 @@
 ---
 title: vue+webpack4.0+axios搭建项目
 date: 2019-04-25 10:45:46
+categories: 
+- vue
 tags: vue
 ---
 

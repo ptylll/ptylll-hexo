@@ -1,6 +1,8 @@
 ---
 title: js事件
 date: 2019-05-06 14:17:30
+categories: 
+- js
 tags: js
 ---
 

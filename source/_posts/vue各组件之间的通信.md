@@ -1,6 +1,8 @@
 ---
 title: vue各组件之间的通信
 date: 2018-06-11 11:22:28
+categories: 
+- vue
 tags:
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: react 无状态组件与有状态组件
 date: 2018-12-21 10:59:49
+categories: 
+- React
 tags: react
 ---
 #### 无状态组件

@@ -1,6 +1,8 @@
 ---
 title: git常用命令
 date: 2018-04-08 11:21:30
+categories: 
+- git
 tags: git
 ---
 

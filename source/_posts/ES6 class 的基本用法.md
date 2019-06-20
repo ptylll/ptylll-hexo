@@ -1,6 +1,8 @@
 ---
 title: ES6 class 的基本用法
 date: 2018-04-04 14:14:20
+categories: 
+- ES6
 tags: ES6
 ---
 

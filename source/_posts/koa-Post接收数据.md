@@ -1,6 +1,8 @@
 ---
 title: koa get,post接收数据
 date: 2019-05-21 15:37:29
+categories: 
+- Node
 tags: node
 ---
 

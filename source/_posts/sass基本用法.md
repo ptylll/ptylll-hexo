@@ -1,6 +1,8 @@
 ---
 title: 'sass基本用法第一篇'
 date: 2018-05-03 20:54:44
+categories: 
+- sass
 tags: sass
 ---
 Sass 是一个 CSS 的扩展，它在 CSS 语法的基础上，允许您使用变量 (variables), 嵌套规则 (nested rules), 混合 (mixins), 导入 (inline imports) 等功能，令 CSS 更加强大与优雅。使用 Sass 以及 Compass 样式库 有助于更好地组织管理样式文件，以及更高效地开发项目。

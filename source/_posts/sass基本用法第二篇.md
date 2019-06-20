@@ -1,6 +1,8 @@
 ---
 title: 'sass基本用法第二篇'
 date: 2018-05-04 21:30:49
+categories: 
+- sass
 tags: sass
 ---
 上篇介绍sass的变量 嵌套规则 嵌套属性

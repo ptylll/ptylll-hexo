@@ -1,6 +1,8 @@
 ---
 title: js两张图片合成一张
 date: 2018-06-06 22:14:13
+categories: 
+- js
 tags:
 ---
 js利用canvas元素合成图片

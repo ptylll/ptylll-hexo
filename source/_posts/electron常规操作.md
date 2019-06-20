@@ -1,6 +1,8 @@
 ---
 title: electron进程通讯
 date: 2019-06-19 15:35:53
+categories: 
+- Electron
 tags: Electron
 ---
 Electron分为主线程（mian）和渲染线程（Renderer）,当我们网页上需要操作执行electron系统上的命令时就需要调用主线程。当执系统上程序执行完会反馈到页面中。我们这把这一过程称之为进程通讯。解决这类需求通常需要`IPC`通讯。
