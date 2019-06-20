@@ -119,10 +119,42 @@ ipcMain.on('sync-message', (event, arg) => {
 
 渲染线程之间通讯
 ##### 主线程消息中转
-
+```js
+// In the main process.
+ipcMain.on('ping-event', (event, arg) => {
+  yourWindow.webContents.send('pong-event', 'something');
+}
+// In renderer process
+// 1
+ipcRenderer.send('ping-event', (event, arg) => {
+    // do something
+  }
+)
+// 2
+ipcRenderer.on('pong-event', (event, arg) => {
+    // do something
+  }
+)
+```
 ##### remote接口
+利用 remote 接口直接获取渲染进程发送消息：
+```js
+remote.BrowserWindow.fromId(winId).webContents.send('ping', 'someThing')
+```
+渲染进程获取 ID 就有多种方法了：
 
-#### 补充
+第一种： 通过 global 设置和获取
+第一种是： 主进程创建事件，发送信息
+```js
+// main process
+win1.webContents.send('distributeIds',{
+    win2Id : win2.id
+});
+win2.webContents.send('distributeIds',{
+    win1Id : win1.id
+});
+```
+#### WebContents
 `webContents`是`EventEmitter`的实例负责渲染和控制网页,是`BrowserWindow`对象的一个属性。
 #####  `webContents.getAllWebContents()`
 返回`WebContents[]` - 所有 WebContents 实例的数组包含所有`Windows，webviews，opened devtools`和devtools扩展背景页的web内容
@@ -132,7 +164,29 @@ ipcMain.on('sync-message', (event, arg) => {
 
 ##### `webContents.fromId(id)`
 `Returns WebContents`给定id的WebContents实例。
+
+#### WebContents事件(常用)
+
+##### `did-finish-load`
+导航完成时触发，即选项卡的旋转器将停止旋转，并指派onload事件后
+
+##### `did-fail-load`
+导航加载失败时触发，与`did-finish-load`事件相反
+
+##### `did-frame-finish-load`
+框架导航加载完成触发
+
+##### `did-start-loading`
+当tab中的旋转指针（spinner）开始旋转时，就会触发该事件
+
+##### `did-stop-loading`
+当tab中的旋转指针（spinner）结束旋转时，就会触发该事件。
+
+##### `did-ready`
+一个框架中的文本加载完成后触发该事件。
+
 #### 参考地址
 https://github.com/electron/electron/blob/master/docs/api/web-contents.md#contentssendchannel-arg1-arg2-
 https://electronjs.org/docs/api/web-contents
 https://segmentfault.com/a/1190000009253100
+https://electronjs.org/docs/api/remote
