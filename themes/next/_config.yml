@@ -93,10 +93,10 @@ index_with_subtitle: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   首页: / || home
-  关于: /about/ || user
-  标签: /tags/ || tags
-  分类: /categories/ || th
-  # archives: /archives/ || archive
+  # 关于: /about/ || user
+  # 标签: /tags/ || tags
+  分类: /categories || th
+  归档: /archives/ || archive
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -378,9 +378,9 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
+  enable: true
+  appid:  dmdRVUJMCwADi92xARA5prTx-gzGzoHsz
+  appkey:  W7QYRNwGkokGDusIBUjWYV6p # your leancloud application appkey
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: Just go go # comment box placeholder
@@ -531,9 +531,9 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: dmdRVUJMCwADi92xARA5prTx-gzGzoHsz #<app_id>
+  app_key: W7QYRNwGkokGDusIBUjWYV6p #<app_key>
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
